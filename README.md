@@ -1,2 +1,3 @@
 # public_html
-This is a Virtual Ninjas Web Development of Goxperts Co.Ltd.
+
+This project is for Virtual Ninjas Web site development.
