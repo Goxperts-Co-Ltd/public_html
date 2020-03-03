@@ -409,31 +409,33 @@ function wp_get_social_media_footer_menu_array($current_menu) {
 
 // //customize Leave  A  comment in to article page and post page
 // // comment form fields:
-// add_filter( 'comment_form_default_fields', 'mo_comment_fields_custom_html' );
-// function mo_comment_fields_custom_html( $fields ) {
-//     // first unset the existing fields:
-//     unset( $fields['comment'] );
-//     unset( $fields['author'] );
-//     unset( $fields['email'] );
-//     unset( $fields['url'] );
-//     //  re-define them as needed:
-//     $fields = [
+add_filter( 'comment_form_default_fields', 'mo_comment_fields_custom_html' );
+function mo_comment_fields_custom_html( $fields ) {
+    // first unset the existing fields:
+    unset( $fields['comment'] );
+    unset( $fields['author'] );
+    unset( $fields['email'] );
+    unset( $fields['url'] );
+    //  re-define them as needed:
+    $fields = [
 
-//             'author' => '<p class="comment-form-author">' . '<label for="author">' . __( '', 'textdomain'  ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' ,
+            'author' => '  <div class="comment-form-wrap pt-5"><div class="form-group">' . ' <label for="name">' . __( '', 'textdomain'  ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label>' ,
         
-//             '<input class="form-control reply" id="author" name="author" placeholder="Name *" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" maxlength="245"' . $aria_req . $html_req . ' /></p>',
-//         'email'  => '<p class="comment-form-email"><label for="email">' . __( '', 'textdomain'  ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
-//             '<input class="form-control reply" id="email" placeholder="Email *" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" maxlength="100" aria-describedby="email-notes"' . $aria_req . $html_req  . ' /></p>',
-//             'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( '', 'noun', 'textdomain' ) . '</label> ' ,
-//             '<textarea class="form-control" id="comment" placeholder="Message *" name="comment" cols="45" rows="5" maxlength="65525" aria-required="true" required="required"></textarea></p>',
+            '<input class="form-control" id="name" name="author" placeholder="Name *" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" maxlength="245"' . $aria_req . $html_req . ' required /></div>',
+        'email'  => '<div class="form-group"><label for="email">' . __( '', 'textdomain'  ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
+            '<input  class="form-control" id="email" placeholder="Email *" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" maxlength="100" aria-describedby="email-notes"' . $aria_req . $html_req  . ' required /></div>',
+            'comment_field' => '<div class="form-group"><label for="message">' . _x( '', 'noun', 'textdomain' ) . '</label> ' ,
+            '<textarea class="form-control" id="comment" placeholder="Message *" name="comment" cols="45" rows="5" maxlength="65525" aria-required="true" required="required"></textarea></div><div class="form-group">
+			<input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+		  </div></div>',
         
-//     ];
+    ];
     
-//     return $fields;
-// }
-// // remove default comment form 
-// add_filter( 'comment_form_defaults', 'mo_remove_default_comment_field', 10, 1 ); 
-// function mo_remove_default_comment_field( $defaults ) { if ( isset( $defaults[ 'comment_field' ] ) ) { $defaults[ 'comment_field' ] = ''; } return $defaults; }
+    return $fields;
+}
+// remove default comment form 
+add_filter( 'comment_form_defaults', 'mo_remove_default_comment_field', 10, 1 ); 
+function mo_remove_default_comment_field( $defaults ) { if ( isset( $defaults[ 'comment_field' ] ) ) { $defaults[ 'comment_field' ] = ''; } return $defaults; }
 
 
 // //woocomerce theme support

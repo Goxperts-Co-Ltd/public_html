@@ -133,9 +133,9 @@ get_header();
 			<?php get_template_part( 'template-parts/blog'); ?>
 		<!-- end of blogs -->
 
-		<!-- blogs -->
+		<!-- subscribe -->
 			<?php get_template_part( 'template-parts/subscribe'); ?>
-		<!-- end of blogs -->
+		<!-- end of subscribe -->
 
 
 <?php
