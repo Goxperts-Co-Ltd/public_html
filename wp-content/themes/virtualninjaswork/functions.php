@@ -130,6 +130,9 @@ function wp_get_social_media_footer_menu_array($current_menu) {
     return $menu;
 }
 
+
+
+
 // function get_primary_category( $post = 0 ) {
 // if ( ! $post ) {
 // $post = get_the_ID();
@@ -446,4 +449,3 @@ function mo_remove_default_comment_field( $defaults ) { if ( isset( $defaults[ '
 
 // // Remove default link around product entries
 // remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
-

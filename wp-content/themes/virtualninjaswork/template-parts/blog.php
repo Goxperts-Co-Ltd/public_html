@@ -1,3 +1,16 @@
+<?php
+$args = array(
+  'post_type' => 'post',
+  'order'      => 'ASC',
+  'posts_per_page' => 3,
+  'post_status' => 'publish',
+  );
+$post_query = new WP_Query($args);
+$post = $post_query->get_posts();
+//hide if no post content
+if(count($post) > 0){
+?>
+
 <section class="ftco-section bg-light">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
@@ -7,62 +20,29 @@
           </div>
         </div>
         <div class="row d-flex">
-          <div class="col-md-3 d-flex ftco-animate">
+          <?php foreach($post as $key => $item) :
+            $author = get_author_name($item->post_author);
+            $size = 'featured-post-img';
+            $featuredImg = wp_get_attachment_image_src( get_post_thumbnail_id($item->ID), $size );   
+          ?>    
+        <div class="col-md-3 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('<?php bloginfo('stylesheet_directory');?>/images/image_1.jpg');">
+              <a href="<?php echo get_permalink($item->ID);?>" class="block-20" style="background-image: url(<?php  echo $featuredImg['0']; ?>);">
               </a>
               <div class="text mt-3">
               	<div class="meta mb-2">
-                  <div><a href="#">August 28, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                  <div><a href="#"><?php echo $item->post_date; ?></a></div>
+                  <div><a href="#"><?php echo $author; ?></a></div>
+                  <div><a href="<?php echo get_permalink($item->ID).'#comments';?>" class="meta-chat"><span class="icon-chat"></span><?php echo $item->comment_count; ?></a></div>
                 </div>
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                <h3 class="heading"><a href="<?php echo get_permalink($item->ID);?>"><?php echo $item->post_title; ?></a></h3>
               </div>
             </div>
-          </div>
-          <div class="col-md-3 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('<?php bloginfo('stylesheet_directory');?>/images/image_2.jpg');">
-              </a>
-              <div class="text mt-3">
-              	<div class="meta mb-2">
-                  <div><a href="#">August 28, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('<?php bloginfo('stylesheet_directory');?>/images/image_3.jpg');">
-              </a>
-              <div class="text mt-3">
-              	<div class="meta mb-2">
-                  <div><a href="#">August 28, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20" style="background-image: url('<?php bloginfo('stylesheet_directory');?>/images/image_4.jpg');">
-              </a>
-              <div class="text mt-3">
-              	<div class="meta mb-2">
-                  <div><a href="#">August 28, 2019</a></div>
-                  <div><a href="#">Admin</a></div>
-                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                </div>
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-              </div>
-            </div>
-          </div>
+          </div>      
+          <?php endforeach;wp_reset_query(); ?>       
         </div>
       </div>
     </section>
+<?php
+}
+?>

@@ -1,0 +1,46 @@
+/* CSS OVERRIDE */
+
+.ftco-navbar-light.scrolled .nav-item.cta>a {
+    background: #08a936;
+}
+
+.ftco-navbar-light .navbar-nav>.nav-item.cta>a {
+    background: #08a936;
+    border: 1px solid #08a936;
+}
+
+.ftco-navbar-light .navbar-nav>.nav-item.cta.cta-colored a {
+    border: 1px solid #fdab44;
+}
+
+.hero-wrap .overlay {
+    background: linear-gradient(to right, #97a4b500 0%, #a16ae800 100%);
+    background-image: linear-gradient(to right, rgba(151, 164, 181, 0) 0%, rgba(161, 106, 232, 0) 100%);
+}
+
+.search-job .form-group .form-control.btn.btn-primary {
+    background: #08a936!important;
+    border: #08a936!important;
+}
+
+.btn.btn-primary {
+    background: #08a936!important;
+    border: 1px solid #08a936!important;
+}
+
+.testimony-section .owl-dots .owl-dot.active {
+    background: #08a936;
+}
+
+.ftco-candidates .owl-dots .owl-dot.active {
+    background: #08a936 !important;
+    /* border: #08a936 !important; */
+}
+
+.subscribe-form .form-group .submit {
+    background: #08a936 !important;
+}
+
+.services-section {
+    background: linear-gradient(to right, #206dfb 0%, #206dfb 100%);
+}

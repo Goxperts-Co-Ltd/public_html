@@ -1,3 +1,14 @@
+<?php
+//erp company query - require ERP Plugins
+$employee_args = array(
+	'type' => 'employee'
+);
+$employees = erp_get_peoples($employee_args);
+
+//loop if employee list available
+if(count($employees) > 0){
+
+?>
 <section class="ftco-section ftco-candidates bg-primary">
     	<div class="container">
     		<div class="row justify-content-center pb-3">
@@ -11,50 +22,33 @@
         <div class="row">
         	<div class="col-md-12 ftco-animate">
         		<div class="carousel-candidates owl-carousel">
+					<?php foreach($employees as $eid => $employee) :
+					    //limit for 10 only only
+						if($eid === 30){
+					    break;
+					  }
+					  $name = $employee->first_name.' '.$employee->last_name;
+					  if(empty($employee->country)){
+						$address = $employee->created;
+					  }else{
+						$address = $employee->city.', '.$employee->country;
+					  }	
+					  $image_url = get_avatar_url($employee->email);			 
+					?>
         			<div class="item">
 		        		<a href="#" class="team text-center">
-		        			<div class="img" style="background-image: url(<?php bloginfo('stylesheet_directory');?>/images/person_1.jpg);"></div>
-		        			<h2>Danica Lewis</h2>
-		        			<span class="position">Western City, UK</span>
+		        			<div class="img" style="background-image: url(<?php echo $image_url; ?>);"></div>
+		        			<h2><?php echo $name; ?></h2>
+		        			<span class="position"><?php echo $address; ?></span>
 		        		</a>
         			</div>
-        			<div class="item">
-	        			<a href="#" class="team text-center">
-		        			<div class="img" style="background-image: url(<?php bloginfo('stylesheet_directory');?>/images/person_2.jpg);"></div>
-		        			<h2>Nicole Simon</h2>
-		        			<span class="position">Western City, UK</span>
-		        		</a>
-	        		</div>
-	        		<div class="item">
-	        			<a href="#" class="team text-center">
-		        			<div class="img" style="background-image: url(<?php bloginfo('stylesheet_directory');?>/images/person_3.jpg);"></div>
-		        			<h2>Cloe Meyer</h2>
-		        			<span class="position">Western City, UK</span>
-		        		</a>
-	        		</div>
-	        		<div class="item">
-	        			<a href="#" class="team text-center">
-		        			<div class="img" style="background-image: url(<?php bloginfo('stylesheet_directory');?>/images/person_4.jpg);"></div>
-		        			<h2>Rachel Clinton</h2>
-		        			<span class="position">Western City, UK</span>
-		        		</a>
-	        		</div>
-	        		<div class="item">
-	        			<a href="#" class="team text-center">
-		        			<div class="img" style="background-image: url(<?php bloginfo('stylesheet_directory');?>/images/person_5.jpg);"></div>
-		        			<h2>Dave Buff</h2>
-		        			<span class="position">Western City, UK</span>
-		        		</a>
-	        		</div>
-	        		<div class="item">
-	        			<a href="#" class="team text-center">
-		        			<div class="img" style="background-image: url(<?php bloginfo('stylesheet_directory');?>/images/person_6.jpg);"></div>
-		        			<h2>Dave Buff</h2>
-		        			<span class="position">Western City, UK</span>
-		        		</a>
-	        		</div>
+        		    <?php endforeach; wp_reset_query();?>		        		
         		</div>
         	</div>
         </div>
     	</div>
-    </section>
+	</section>
+	
+<?php
+}//loop if employee is listed
+?>
