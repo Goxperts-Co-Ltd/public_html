@@ -47,7 +47,7 @@ get_header();
 	<!-- end of testimonials -->
 
 	<!-- candidates -->
-	<?php get_template_part( 'template-parts/candidates'); ?>
+	<?php //get_template_part( 'template-parts/candidates'); ?>
 	<!-- end of candidates -->
 
 	<!-- blogs -->
