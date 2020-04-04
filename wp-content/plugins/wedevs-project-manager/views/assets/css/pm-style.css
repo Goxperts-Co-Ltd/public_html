@@ -2995,7 +2995,7 @@
 #wedevs-project-manager .pm-my-tasks a.pm-my-taskoverview {
   background-image: url(../css/images/activity.svg?ef571675391fdb96ecc5a13afa22c5dd);
   padding-left: 50px !important;
-  background-position: 20% 30% !important;
+  background-position: 20% 30%;
 }
 #wedevs-project-manager .pm-my-tasks .active {
   border-bottom: 2px solid #019dd6 !important;
