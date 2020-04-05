@@ -26,7 +26,10 @@ function wp_get_menu_array($current_menu) {
 
     $array_menu = wp_get_nav_menu_items($current_menu);
  
-    foreach ($array_menu as $m) {
+    foreach ($array_menu as $key => $m) {
+		if($key === 7){
+		break;
+		}  
         if (empty($m->menu_item_parent)) {
 			if($m->title == 'Want a Job'){
 
@@ -107,7 +110,7 @@ function wp_get_social_media_footer_menu_array($current_menu) {
 
     $array_menu = wp_get_nav_menu_items($current_menu);
  
-    foreach ($array_menu as $m) {  
+    foreach ($array_menu as $key => $m) {
 		if (empty($m->menu_item_parent)) {     
 			if($m->title == 'Twitter'){
 				echo '<li class="ftco-animate"><a href="';

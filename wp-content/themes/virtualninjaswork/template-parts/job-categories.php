@@ -4,7 +4,8 @@
 		 'taxonomy' => 'main-category',
 		 'hide_empty' => false
 	);
-	$main_category_terms = get_terms($main_category);	
+	$main_category_terms = get_terms($main_category);
+	$root_home = esc_url( home_url( '/?post_type=awsm_job_openings&jq=&main__category_spec=' ));		
 ?>
 <section class="ftco-section ftco-no-pt ftco-no-pb">
     	<div class="container">
@@ -14,24 +15,12 @@
     					<div class="row no-gutters"> 
 						<!-- start of main categories -->
 						<?php foreach($main_category_terms as $key => $category) :
-							
+						    if($key === 6){
+							break;
+							}			
 							$count = $key;
 							$title = $category->name;
 							$open_positions =  $category->count;
-							if($category->slug == 'accounting-finance'){
-								$icon = 'flaticon-accounting';
-							}elseif($category->slug == 'education-training'){
-								$icon = 'flaticon-mortarboard';
-							}elseif($category->slug == 'graphic-ui-ux-design'){
-								$icon = 'flaticon-idea';
-								
-							}elseif($category->slug == 'health-hospital'){
-								$icon = 'flaticon-stethoscope';
-							}elseif($category->slug == 'restaurant-food'){
-								$icon = 'flaticon-dish';
-							}elseif($category->slug == 'website-software'){
-								$icon = 'flaticon-contact';
-							}
 							if($count == 1){
 								$active = ' active';
 							}elseif($count == 0){
@@ -42,7 +31,7 @@
 							?>
     						<div class="col-md-2">
     							<div class="top-category text-center <?php echo $border; echo $active; ?>">
-    								<h3><a href="#"><?php echo $title; ?></a></h3>
+    								<h3><a href="<?php echo $root_home.$category->slug; ?>"><?php echo $title; ?></a></h3>
     								<span class="icon <?php echo $icon; ?>"></span>
     								<p><span class="number"><?php echo $open_positions; ?></span> <span>Open position</span></p>
     							</div>
