@@ -6,7 +6,7 @@ global $post;
 		 'order'      => 'ASC'
 	);
 	$jobs_category_terms = get_terms($jobs_category);
-	$root = esc_url( home_url( '/?post_type=awsm_job_openings&jq=&main__category_spec=&job__category_spec=' ));	
+	$root = esc_url( home_url( '/job-openings/?jq=&main__category_spec=&job__category_spec=' ));	
 ?>
 <section class="ftco-section">
     	<div class="container">

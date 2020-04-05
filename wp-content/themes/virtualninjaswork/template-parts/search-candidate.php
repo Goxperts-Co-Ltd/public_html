@@ -1,5 +1,5 @@
 <?php 
-	$root = esc_url( home_url( '/' ));
+	$root = esc_url( home_url( '/search/' ));
 	global $post;
 	//for job locations
 	$search_category = array(
@@ -36,7 +36,7 @@
 				              				<div class="form-group">
 					              				<div class="form-field">
 					              					<div class="icon"><span class="icon-briefcase"></span></div>
-													<input type="hidden" class="form-control" value="awsm_job_openings" name="post_type">
+													<input type="hidden" class="form-control" value="" name="">
 									                <input type="text" class="form-control" placeholder="eg. Garphic. Web Developer" value="<?php echo get_search_query();?>" name="jq">
 									              </div>
 								              </div>

@@ -5,7 +5,7 @@
 		 'hide_empty' => false
 	);
 	$main_category_terms = get_terms($main_category);
-	$root_home = esc_url( home_url( '/?post_type=awsm_job_openings&jq=&main__category_spec=' ));		
+	$root_home = esc_url( home_url( '/job-openings/?jq=&main__category_spec=' ));		
 ?>
 <section class="ftco-section ftco-no-pt ftco-no-pb">
     	<div class="container">

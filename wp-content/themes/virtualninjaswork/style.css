@@ -214,10 +214,10 @@ div.awsm-job-specification-item {
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out !important;
 }
 
-a:hover,
-a:focus {
+a.awsm-job-more:hover,
+a.awsm-job-more:focus {
     text-decoration: none !important;
-    color: #fcfdff !important;
+    color: #edeff3 !important;
     outline: none !important;
 }
 
@@ -232,6 +232,10 @@ a.awsm-job-more {
     height: 400px !important;
     background-size: cover !important;
     background-position: bottom center!important;
+}
+
+div#filter.row div.awsm-job-wrap div.awsm-filter-wrap {
+    display: none;
 }
 
 
