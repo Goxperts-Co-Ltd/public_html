@@ -22,6 +22,11 @@ get_header();
                     <?php get_template_part( 'template-parts/latest-company'); ?>
                     <!-- end -->
                 </div>
+                <div class="sidebar-box bg-white p-4 ftco-animate">
+                <!-- recent blog -->
+                <?php get_template_part( 'template-parts/recent-blogs'); ?>
+                <!-- end of recent blog -->
+                </div>
             </div>
         </div>
     </div>

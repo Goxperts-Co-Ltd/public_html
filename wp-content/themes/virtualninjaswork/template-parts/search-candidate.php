@@ -16,12 +16,11 @@
 	);	
 	$main_search_location = get_terms($search_location); 
 ?>
-
 <div class="col-md-12 nav-link-wrap">
 				            <div class="nav nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-				              <a class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Find a Job</a>
+				              <!-- <a class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Find a Job</a> -->
 
-				              <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Find a Candidate</a>
+				              <!-- <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Find a Candidate</a> -->
 
 				            </div>
 				          </div>
@@ -93,7 +92,7 @@
 				              	</form>
 				              </div>
 
-				              <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-performance-tab">
+				              <!-- <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-performance-tab">
 				              	<form action="#" class="search-job">
 				              		<div class="row">
 				              			<div class="col-md">
@@ -138,7 +137,7 @@
 				              			</div>
 				              		</div>
 				              	</form>
-				              </div>
+				              </div> -->
 				            </div>
 				          </div>
 				        </div>

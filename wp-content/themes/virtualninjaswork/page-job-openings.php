@@ -9,11 +9,11 @@ $image = get_field( 'banner_image',$post_array['ID']);
 ?>
 <div class="hero-wrap hero-wrap-2" style="background-image: url('<?php echo $image['url']; ?>');"
     data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
+    <div id="job-opens" class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-start">
             <div class="col-md-12 ftco-animate text-center mb-5">
-                <h1 class="mb-3 bread">Job Listing</h1>
+                <h2 class="mb-3 bread">Job Listing</h2>
             </div>
         </div>
     </div>

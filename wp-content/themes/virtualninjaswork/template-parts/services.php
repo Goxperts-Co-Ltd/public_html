@@ -1,3 +1,9 @@
+<?php
+$services_1 = get_field( 'services_1',$post_array['ID']);
+$services_2 = get_field( 'services_2',$post_array['ID']);
+$services_3 = get_field( 'services_3',$post_array['ID']);
+$services_4 = get_field( 'services_4',$post_array['ID']);
+?>
 <section class="ftco-section services-section">
       <div class="container">
         <div class="row d-flex">
@@ -5,8 +11,7 @@
             <div class="media block-6 services d-block">
               <div class="icon"><span class="flaticon-resume"></span></div>
               <div class="media-body">
-                <h3 class="heading mb-3">Search Millions of Jobs</h3>
-                <p>A small river named Duden flows by their place and supplies.</p>
+               <?php echo $services_1;?>
               </div>
             </div>      
           </div>
@@ -14,8 +19,7 @@
             <div class="media block-6 services d-block">
               <div class="icon"><span class="flaticon-team"></span></div>
               <div class="media-body">
-                <h3 class="heading mb-3">Easy To Manage Jobs</h3>
-                <p>A small river named Duden flows by their place and supplies.</p>
+              <?php echo $services_2;?>
               </div>
             </div>    
           </div>
@@ -23,8 +27,7 @@
             <div class="media block-6 services d-block">
               <div class="icon"><span class="flaticon-career"></span></div>
               <div class="media-body">
-                <h3 class="heading mb-3">Top Careers</h3>
-                <p>A small river named Duden flows by their place and supplies.</p>
+              <?php echo $services_3;?>
               </div>
             </div>      
           </div>
@@ -32,8 +35,7 @@
             <div class="media block-6 services d-block">
               <div class="icon"><span class="flaticon-employees"></span></div>
               <div class="media-body">
-                <h3 class="heading mb-3">Search Expert Candidates</h3>
-                <p>A small river named Duden flows by their place and supplies.</p>
+              <?php echo $services_4;?>
               </div>
             </div>      
           </div>

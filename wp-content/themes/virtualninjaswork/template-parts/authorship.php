@@ -1,9 +1,14 @@
+<?php
+$author =  get_the_author();
+$author_desc = get_the_author_description();
+$image_author = get_avatar_url(get_the_author_ID());
+?>
 <div class="about-author d-flex p-4 bg-light">
               <div class="bio mr-5">
-                <img src="<?php bloginfo('stylesheet_directory');?>/images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
+                <img src="<?php echo $image_author;?>">
               </div>
               <div class="desc">
-                <h3>George Washington</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+                <h3><?php echo $author;?></h3>
+                <p><?php echo $author_desc;?></p>
               </div>
             </div>

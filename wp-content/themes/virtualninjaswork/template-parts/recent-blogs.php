@@ -20,7 +20,7 @@
     $args = array(
         'post_type' => 'post',
         'order'      => 'ASC',
-        'posts_per_page' => 3,
+        'posts_per_page' => 5,
         'post_status' => 'publish',
         'post__not_in' => array($current_post),
         'cat' => 0
@@ -32,7 +32,7 @@
       $post_query->the_post();
       $size = 'featured-post-img';
       $featuredImg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), $size );
-     
+      $comment = get_comment_count($post->ID);   
 ?>
               <div class="block-21 mb-4 d-flex">
                 <a class="blog-img mr-4" style="background-image: url(<?php  echo $featuredImg['0']; ?>);"></a>
@@ -41,7 +41,7 @@
                   <div class="meta">
                     <div><span class="icon-calendar"></span>&nbsp;<?php echo get_the_date(); ?></div>
                     <div><span class="icon-person"></span><?php echo strtoupper(get_the_author()); ?></div>
-                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                    <div><a href="<?php echo get_permalink($post->ID);?>#comments"><span class="icon-chat"></span><?php echo $comment['approved'];?></a></div>
                   </div>
                 </div>
           </div>

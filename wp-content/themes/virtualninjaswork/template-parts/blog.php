@@ -27,13 +27,13 @@ if(count($post) > 0){
           ?>    
         <div class="col-md-3 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="<?php echo get_permalink($item->ID);?>" class="block-20" style="background-image: url(<?php  echo $featuredImg['0']; ?>);">
+              <a href="<?php echo get_permalink( $item);?>" class="block-20" style="background-image: url(<?php  echo $featuredImg['0']; ?>);">
               </a>
               <div class="text mt-3">
               	<div class="meta mb-2">
-                  <div><a href="#"><?php echo $item->post_date; ?></a></div>
+                  <div><a href="#"><span class="icon-calendar"></span>&nbsp;<?php echo get_the_date(); ?></a></div>
                   <div><a href="#"><?php echo $author; ?></a></div>
-                  <div><a href="<?php echo get_permalink($item->ID).'#comments';?>" class="meta-chat"><span class="icon-chat"></span><?php echo $item->comment_count; ?></a></div>
+                  <div><a href="<?php echo get_permalink($item->ID).'#comments';?>" class="meta-chat"><span class="icon-chat"></span>&nbsp;<?php echo $item->comment_count; ?></a></div>
                 </div>
                 <h3 class="heading"><a href="<?php echo get_permalink($item->ID);?>"><?php echo $item->post_title; ?></a></h3>
               </div>

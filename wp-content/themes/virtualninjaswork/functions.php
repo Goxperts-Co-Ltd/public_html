@@ -136,62 +136,120 @@ function wp_get_social_media_footer_menu_array($current_menu) {
 
 
 
-// function get_primary_category( $post = 0 ) {
-// if ( ! $post ) {
-// $post = get_the_ID();
-// }
-// // SHOW YOAST PRIMARY CATEGORY, OR FIRST CATEGORY
-// $category = get_the_category( $post );
+function get_primary_category( $post = 0 ) {
+if ( !$post ) {
+$post = get_the_ID();
+}
+// SHOW YOAST PRIMARY CATEGORY, OR FIRST CATEGORY
+$category = get_the_category( $post );
 
-// // If post has a category assigned.
-// if ($category){
-// $category_display = '';
-// $category_slug = '';
-// $category_link = '';
-// $category_id = '';
+// If post has a category assigned.
+if ($category){
+$category_display = '';
+$category_slug = '';
+$category_link = '';
+$category_id = '';
 
-// if ( class_exists('WPSEO_Primary_Term') )
-// {
-//   // Show the post's 'Primary' category, if this Yoast feature is available, & one is set
-//   $wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id( $post ) );
-//   $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
-//   $term = get_term( $wpseo_primary_term );
-//   if (is_wp_error($term)) {
-//     // Default to first category (not Yoast) if an error is returned
-//     $category_display = $category[0]->name;
-//     $category_slug = $category[0]->slug;
-//     $category_link = get_category_link( $category[0]->term_id );
-//     $category_id = $category[0]->term_id;
+if ( class_exists('WPSEO_Primary_Term') )
+{
+  // Show the post's 'Primary' category, if this Yoast feature is available, & one is set
+  $wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id( $post ) );
+  $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+  $term = get_term( $wpseo_primary_term );
+  if (is_wp_error($term)) {
+    // Default to first category (not Yoast) if an error is returned
+    $category_display = $category[0]->name;
+    $category_slug = $category[0]->slug;
+    $category_link = get_category_link( $category[0]->term_id );
+    $category_id = $category[0]->term_id;
 
 
-//   } else {
-//     // Yoast Primary category
-//     $category_display = $term->name;
-//     $category_slug = $term->slug;
-//     $category_link = get_category_link( $term->term_id );
-//     $category_id = $term->term_id;
+  } else {
+    // Yoast Primary category
+    $category_display = $term->name;
+    $category_slug = $term->slug;
+    $category_link = get_category_link( $term->term_id );
+    $category_id = $term->term_id;
  
     
     
-//   }
-// }
-// else {
-//   // Default, display the first category in WP's list of assigned categories
-//   $category_display = $category[0]->name;
-//   $category_slug = $category[0]->slug;
-//   $category_link = get_category_link( $category[0]->term_id );
-//   $category_id = $term->term_id;
+  }
+}
+else {
+  // Default, display the first category in WP's list of assigned categories
+  $category_display = $category[0]->name;
+  $category_slug = $category[0]->slug;
+  $category_link = get_category_link( $category[0]->term_id );
+  $category_id = $term->term_id;
 
   
-// }
+}
 
 
-//  echo $category_display;
+ echo $category_display;
 
 
-// }
-// return $primary_category;
-// }
+}
+return $primary_category;
+}
+
+//get the primary url of category
+function get_primary_url( $post = 0 ) {
+	if ( !$post ) {
+	$post = get_the_ID();
+	}
+	// SHOW YOAST PRIMARY CATEGORY, OR FIRST CATEGORY
+	$category = get_the_category( $post );
+	
+	// If post has a category assigned.
+	if ($category){
+	$category_display = '';
+	$category_slug = '';
+	$category_link = '';
+	$category_id = '';
+	
+	if ( class_exists('WPSEO_Primary_Term') )
+	{
+	  // Show the post's 'Primary' category, if this Yoast feature is available, & one is set
+	  $wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id( $post ) );
+	  $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+	  $term = get_term( $wpseo_primary_term );
+	  if (is_wp_error($term)) {
+		// Default to first category (not Yoast) if an error is returned
+		$category_display = $category[0]->name;
+		$category_slug = $category[0]->slug;
+		$category_link = get_category_link( $category[0]->term_id );
+		$category_id = $category[0]->term_id;
+	
+	
+	  } else {
+		// Yoast Primary category
+		$category_display = $term->name;
+		$category_slug = $term->slug;
+		$category_link = get_category_link( $term->term_id );
+		$category_id = $term->term_id;
+	 
+		
+		
+	  }
+	}
+	else {
+	  // Default, display the first category in WP's list of assigned categories
+	  $category_display = $category[0]->name;
+	  $category_slug = $category[0]->slug;
+	  $category_link = get_category_link( $category[0]->term_id );
+	  $category_id = $term->term_id;
+	
+	  
+	}
+	
+	
+	 echo $category_link;
+	
+	
+	}
+	return $primary_category;
+	}
 
 // //custom breadcrumps
 

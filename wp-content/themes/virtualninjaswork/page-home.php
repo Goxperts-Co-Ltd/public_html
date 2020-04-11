@@ -6,6 +6,7 @@ global $post;
 $post_array = $post->to_array();
 //get the banner image
 $image = get_field( 'banner_image',$post_array['ID']);
+$banner_text = get_field( 'banner_text',$post_array['ID']);
 ?>
 
 <div class="hero-wrap img" style="background-image: url(<?php echo $image['url']; ?>); ">
@@ -14,8 +15,8 @@ $image = get_field( 'banner_image',$post_array['ID']);
       	<div class="row d-md-flex no-gutters slider-text align-items-center justify-content-center">
 	        <div class="col-md-10 d-flex align-items-center ftco-animate">
 	        	<div class="text text-center pt-5 mt-md-5">
-	        		<p class="mb-4">Find Job, Employment, and Career Opportunities</p>
-	            <h1 class="mb-5">The Eassiest Way to Get Your New Job</h1>					
+				<!-- Banner Text -->
+	        		<?php echo $banner_text;?>					
 				<!-- hero slider -->
 				<?php get_template_part( 'template-parts/hero'); ?>
 				<!-- end of slider -->

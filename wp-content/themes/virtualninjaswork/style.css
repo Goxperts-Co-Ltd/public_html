@@ -387,5 +387,34 @@ input {
     border-color: #000000 !important;
 }
 
+p.form-submit {
+    display: none!important;
+}
+
+div#single {
+    background-image: linear-gradient(to right, rgba(29, 30, 31, 0.89) 0%, rgba(161, 106, 232, 0) 100%)!important;
+}
+
+div.col-lg-3.sidebar {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+h1.brands {
+    display: none !important;
+}
+
+.hero-wrap .slider-text h2 {
+    font-size: 54px;
+    color: #fff;
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+div#job-opens,
+div#contacts {
+    background-image: linear-gradient(to right, rgba(55, 57, 60, 0.68) 0%, rgba(161, 106, 232, 0) 100%)!important;
+}
+
 
 /* div.awsm-filter-item {} */
