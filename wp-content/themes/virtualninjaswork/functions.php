@@ -297,6 +297,18 @@ function  customize_admin_user_view_backend(){
 }
 add_filter('admin_head','customize_admin_user_view_backend');
 
+//customize admin bar title site name
+add_filter('admin_title', 'my_admin_title', 10, 2);
+function my_admin_title($admin_title, $title)
+{
+        return get_bloginfo('name').' &bull; '.$title;
+}
+//login title
+function custom_login_title( $login_title ) {
+	return str_replace(array( ' &lsaquo;', ' &#8212; WordPress'), array( ' &bull;', ''),$login_title );
+}
+add_filter( 'login_title', 'custom_login_title' );
+
 
 // //custom breadcrumps
 
