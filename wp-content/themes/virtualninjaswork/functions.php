@@ -251,6 +251,53 @@ function get_primary_url( $post = 0 ) {
 	return $primary_category;
 	}
 
+//remove job listing to writers user role
+function  remove_admin_job_style_backend(){
+	$user = wp_get_current_user();
+    if(in_array('writer', $user->roles)){  
+         echo '<style type="text/css">
+            li#menu-posts-awsm_job_openings{
+            display: none!important;
+            }
+              </style>';  
+    }
+}
+add_filter('admin_head','remove_admin_job_style_backend');
+
+//set view per specific user roles
+function  customize_admin_user_view_backend(){
+	$user = wp_get_current_user();	
+    if(!in_array('administrator', $user->roles)){  
+		 echo '
+		 <style type="text/css">
+
+		 div#wpfooter,
+		 div#screen-meta-links,
+		 div.update-nag,
+		 li#wp-admin-bar-Protection,
+		 li#wp-admin-bar-wp-logo,
+		 a[href^="admin.php?page=pm_projects#/premium"],
+		 a[href^="tools.php"],
+		 li#menu-tools,
+		 tr.user-rich-editing-wrap,
+		 tr.user-admin-color-wrap,
+		 tr.user-comment-shortcuts-wrap,
+		 tr.show-admin-bar.user-admin-bar-front-wrap,
+		 tr.user-wikipedia-wrap,
+		 a[href="https://en.gravatar.com/"],
+		 li#menu-media,
+		 li#wp-admin-bar-updates,
+		 span.erp-help,
+		 a.router-link-exact-active.router-link-active{
+		   display: none!important;
+		 }
+
+        </style>';  
+    }
+}
+add_filter('admin_head','customize_admin_user_view_backend');
+
+
 // //custom breadcrumps
 
 // function get_hansel_and_gretel_breadcrumbs()
