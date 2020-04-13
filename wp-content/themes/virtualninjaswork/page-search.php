@@ -1,4 +1,7 @@
 <?php
+/** 
+ * Template Name: Search Page
+ */ 
 get_header();
 ?>
 <section class="ftco-section bg-light">
