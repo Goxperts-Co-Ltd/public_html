@@ -1,4 +1,7 @@
 <?php
+/** 
+ * Template Name: Job Listing Page
+ */ 
 get_header();
 ?>
 <?php

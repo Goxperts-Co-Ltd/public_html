@@ -1,4 +1,7 @@
 <?php
+/** 
+ * Template Name: Blog Page
+ */ 
 get_header();
 global $post;
 $post_array = $post->to_array();
