@@ -103,3 +103,31 @@ function wpmail_content_type() {
 
     return 'text/html';
 }
+
+/**
+ * change registration url and login redirection
+ * allow html emails
+ * 
+ * @author Ferdinand Lazarte <ferdinandlazarte2017@gmail.com>
+ * @return string
+ */
+add_filter( 'register_url', 'my_register_url' );
+function my_register_url( $url ) {
+    $siteUrl = get_site_url();
+    if( is_admin() ) {
+        return $url;
+    }
+    return $siteUrl.'/register';
+}
+add_filter( 'login_url', 'my_login_url', 10, 2 );
+function my_login_url( $url, $redirect = null ) {
+    $siteUrl = get_site_url();
+    if( is_admin() ) {
+        return $url;
+    }
+    $r = "";
+    if( $redirect ) {
+        $r = "?redirect_to=".esc_attr($redirect);
+    }
+    return $siteUrl.'/login/'.$r;
+}
