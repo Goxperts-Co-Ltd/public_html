@@ -630,3 +630,21 @@ function redirect_login_page() {
 
 }
 add_action( 'template_redirect', 'redirect_login_page' );
+
+//meta description
+function term_taxonomy_meta($post, $term_type){
+	//yoast seo meta values
+	$term = $post->to_array();
+	$seperator = '|';
+	$sitename = get_bloginfo('name');
+	$meta = get_option( 'wpseo_taxonomy_meta');
+	$primary_category = get_cat_name($term['category_parent']);
+	$term_value = $meta['category'][$term['term_id']][$term_type];
+	$term_value = $meta['category'][$term['term_id']][$term_type];
+	$term_value = str_replace("%%sep%%", $seperator, $term_value);
+	$term_value = str_replace("%%sitename%%",  $sitename, $term_value);
+	$term_value = str_replace("%%term_title%%",  $term['name'], $term_value);
+	$term_value = str_replace("%%primary_category%%",   $primary_category, $term_value);
+
+return $term_value;
+}
