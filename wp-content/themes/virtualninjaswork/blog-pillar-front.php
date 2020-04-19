@@ -23,21 +23,18 @@ get_header();
 </div>
 
 </div>
-
 <div class="site-section py-0">
-    <div class="owl-carousel hero-slide owl-style">
+      <div class="owl-carousel hero-slide owl-style">
 
-      <!-- featured blogs -->
-        <?php get_template_part( 'template-parts/pillar-blog-featured'); ?>
+        
+<!-- featured blogs -->
+<?php get_template_part( 'template-parts/pillar-blog-featured'); ?>
       <!-- end of featured blogs -->
 
-    
-        </div>
 
-
+      </div>
     </div>
-</div>
-
+  
 
 <div class="site-section">
     <div class="container">

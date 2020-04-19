@@ -17,27 +17,24 @@ if(count($post) > 0){
             $desc = get_post_meta( $item->ID, '_yoast_wpseo_metadesc', true);   
 ?>
 <div class="site-section">
-            <div class="container">
-                <div class="half-post-entry d-block d-lg-flex bg-light">
-                    <div class="img-bg"
-                        style="background-image: url('<?php  echo $featuredImg['0'];?>')">
-                    </div>
-                    <div class="contents">
-                        <span class="caption">Featured</span>
-                        <h2><a href="<?php echo get_permalink( $item);?>"><?php echo $item->post_title; ?></a></h2>
-                        <p class="mb-3"><?php echo $desc; ?></p>
-
-                        <div class="post-meta">
-                            <span class="d-block"><a href="#"><?php echo $author; ?></span>
-                            <span class="date-read"><?php echo get_the_date(); ?><span class="mx-1">&bullet;</span><span
-                                    class="icon-star2"></span></span>
-                        </div>
-
-                    </div>
+    <div class="container">
+        <div class="half-post-entry d-block d-lg-flex bg-light">
+            <div class="img-bg" style="background-image: url('<?php  echo $featuredImg['0'];?>')"></div>
+            <div class="contents">
+                <span class="caption">Editor's Pick</span>
+                <h2><a href="<?php echo get_permalink( $item);?>"><?php echo $item->post_title; ?></a></h2>
+                <p class="mb-3"><?php echo $desc; ?></p>
+                <div class="post-meta">
+                    <span class="d-block"><a href="#"><?php echo $author; ?></a> in <a href="#">Food</a></span>
+                    <span class="date-read"><?php echo get_the_date(); ?><span class="mx-1">&bullet;</span> 3 min read
+                        <span class="icon-star2"></span></span>
                 </div>
+
             </div>
         </div>
-        <?php endforeach;wp_reset_query();?>
+    </div>
+</div>
+<?php endforeach;wp_reset_query();?>
 <?php
 }
 ?>
