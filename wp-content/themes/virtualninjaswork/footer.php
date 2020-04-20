@@ -6,7 +6,7 @@
         	<div class="col-md">
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">VirtualNinjas.Work</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <p>Virtual Ninjas, you top freelance hub! Gathering together expert and reliable freelancers, and agencies to collaborate to businesses that offers exemplary opportunities.</p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
                <!-- Social Media footer Menu -->
                <?php  wp_get_social_media_footer_menu_array('Social Media') ?>
