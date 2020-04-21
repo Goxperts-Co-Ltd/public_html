@@ -7,8 +7,6 @@
 include( 'configure/pillar-css-js.php' );
 get_header();
 ?>
-<div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
-
     <div class="container">
         <div class="d-flex align-items-center">
 

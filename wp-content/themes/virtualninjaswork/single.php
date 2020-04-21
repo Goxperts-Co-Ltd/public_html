@@ -51,7 +51,7 @@ get_header();
                       echo '<div class="pt-5">';
                       foreach($tags as $key => $tag)
                       {  
-                        echo '<a href="#">'.$tag->name.'</a>';   
+                        echo '<a href="#">'.'#'.$tag->name.'</a>&nbsp;';   
                       }
                         echo '</div>';
 
