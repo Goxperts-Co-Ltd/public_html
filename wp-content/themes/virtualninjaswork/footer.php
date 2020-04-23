@@ -6,7 +6,8 @@
         	<div class="col-md">
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">VirtualNinjas.Work</h2>
-              <p>Virtual Ninjas, you top freelance hub! Gathering together expert and reliable freelancers, and agencies to collaborate to businesses that offers exemplary opportunities.</p>
+              <!-- <p>Virtual Ninjas, you top freelance hub! Gathering together expert and reliable freelancers, and agencies to collaborate to businesses that offers exemplary opportunities.</p> -->
+              <p><img src="<?php bloginfo('stylesheet_directory');?>/assets/logo/logos.PNG" style="width:200px;height:122px;opacity: 0.4;" ></p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
                <!-- Social Media footer Menu -->
                <?php  wp_get_social_media_footer_menu_array('Social Media') ?>
