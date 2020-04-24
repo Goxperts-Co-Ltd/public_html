@@ -24,12 +24,16 @@ $image = get_field( 'banner_image',$post_array['ID']);
         <div class="row d-flex mb-5 contact-info">
           <div class="col-md-12 mb-4">
             <h3 class="h3">Login Information</h3>
+            <p>Virtual Ninjas, you top freelance hub! Gathering together expert and reliable freelancers, and agencies to collaborate to businesses that offers exemplary opportunities.</p>
           </div>
           <div class="w-100"></div>
         </div>
         <div class="row block-9">
           <div class="col-md-6 order-md-last d-flex">
             <form name="loginform" action="<?php echo home_url(); ?>/login" method="post" class="bg-white p-5 contact-form">
+            <div class="text-center">
+              <h2>Welcome Ninjas</h2>
+            </div>
             <div>
             <?php 
              $errors = my_check_login();
@@ -52,11 +56,12 @@ $image = get_field( 'banner_image',$post_array['ID']);
                 <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-primary py-3 px-5" value="Log In">
                 <input type="hidden" name="redirect_to" value="<?php echo home_url(); ?>/wp-admin/index.php">
               </div>
+              <div><p>Not yet a Member? Click <a href="<?php echo home_url(); ?>/register">here</a> to register!</p></div>
             </form>         
           </div>
 
           <div class="col-md-6 d-flex">
-          	<div class="bg-white"></div>
+          	<div class="bg-white"><img src="<?php bloginfo('stylesheet_directory');?>/assets/logo/default.png" alt="virtual ninjas" style="width: 100%;"></div>
           </div>
         </div>
       </div>
