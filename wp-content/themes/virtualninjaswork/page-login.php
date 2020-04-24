@@ -32,6 +32,7 @@ $image = get_field( 'banner_image',$post_array['ID']);
           <div class="col-md-6 order-md-last d-flex">
             <form name="loginform" action="<?php echo home_url(); ?>/login" method="post" class="bg-white p-5 contact-form">
             <div class="text-center">
+              <img src="<?php bloginfo('stylesheet_directory');?>/assets/logo/login.svg" alt="virtual login"  style="width: 10%;">
               <h2>Welcome Ninjas</h2>
             </div>
             <div>
@@ -61,7 +62,7 @@ $image = get_field( 'banner_image',$post_array['ID']);
           </div>
 
           <div class="col-md-6 d-flex">
-          	<div class="bg-white"><img src="<?php bloginfo('stylesheet_directory');?>/assets/logo/default.png" alt="virtual ninjas" style="width: 100%;"></div>
+          	<div class="bg-white"><img src="<?php bloginfo('stylesheet_directory');?>/assets/logo/default.png" alt="virtual ninjas" style="width: 101%;"></div>
           </div>
         </div>
       </div>
