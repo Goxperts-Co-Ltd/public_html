@@ -648,3 +648,92 @@ function term_taxonomy_meta($post, $term_type){
 
 return $term_value;
 }
+
+//set candidate registration
+add_action('template_redirect', 'my_candidate_register');
+function my_candidate_register(){
+	if( is_page('register') && isset($_POST['Candidate_Register']) ){
+		$response = [];
+		$creds                      = array();
+		$creds['firstName']         = stripslashes( trim( $_POST['firstName'] ) );
+		$creds['lastName']          = stripslashes( trim( $_POST['lastName'] ) );
+		$creds['candidateEmail']    = stripslashes( trim( $_POST['candidateEmail'] ) );
+		$creds['candidateType']     = stripslashes( trim( $_POST['candidateType'] ) );
+		$creds['candidateLocation'] = stripslashes( trim( $_POST['candidateLocation'] ) );
+		$creds['personalDesc']      = stripslashes( trim( $_POST['personalDesc'] ) );
+		$creds['candidateGender']   = stripslashes( trim( $_POST['candidateGender'] ) );
+		$creds['candidateMobile']   = stripslashes( trim( $_POST['candidateMobile'] ) );
+		$creds['candidateSource']   = stripslashes( trim( $_POST['candidateSource'] ) );
+		$creds['candidateWebsite']  = stripslashes( trim( $_POST['candidateWebsite'] ) );
+		$creds['candidatePayType']  = stripslashes( trim( $_POST['candidatePayType'] ) );
+		$creds['candidatePayRate']  = stripslashes( trim( $_POST['candidatePayRate'] ) );
+		//null muna sa ngayon
+		$secure_cookie              = null;
+
+		/**
+		 * Candidate data
+		 *
+		 * @var array
+		 */
+		$args = array(
+			'user_id'    => '',
+			'user_email' => $creds['candidateEmail'],
+			'work'       => array(
+            'employee_id'      => '',
+            'designation'      => 0,
+            'department'       => 0,
+            'location'         => $creds['candidateLocation'],
+            'hiring_source'    => $creds['candidateSource'],
+            'hiring_date'      => current_time( 'mysql' ),
+            'termination_date' => '',
+            'date_of_birth'    => '',
+            'reporting_to'     => 0,
+            'pay_rate'         => $creds['candidatePayRate'],
+            'pay_type'         => $creds['candidatePayType'],
+            'type'             => $creds['candidateType'],
+            'status'           => 'inactive',//set muna natin as inactive para saka na gawin active pag na approve na ang application
+             ),
+			'personal'   => array(
+				'photo_id'        => 0,
+				'first_name'      => $creds['firstName'],
+				'middle_name'     => '',
+				'last_name'       => $creds['lastName'],
+				'other_email'     => '',
+				'phone'           => '',
+				'work_phone'      => '',
+				'blood_group'     => '',
+				'spouse_name'     => '',
+				'father_name'     => '',
+				'mother_name'     => '',
+				'mobile'          => $creds['candidateMobile'],
+				'address'         => '',
+				'gender'          => $creds['candidateGender'],
+				'marital_status'  => '',
+				'nationality'     => '',
+				'driving_license' => '',
+				'hobbies'         => '',
+				'user_url'        => $creds['candidateWebsite'],
+				'description'     => $creds['personalDesc'],
+				'street_1'        => '',
+				'street_2'        => '',
+				'city'            => '',
+				'country'         => $creds['candidateLocation'],
+				'state'           => '',
+				'postal_code'     => '',
+			),
+		);
+		//validate email is already exist napo
+		$candidate_user = get_user_by( 'email', $creds['candidateEmail'] );
+		if($candidate_user){
+			$response['email'] = '<script type="text/javascript">alert("Email is already exist!");</script>';
+			return $response;
+		}
+		$create_user = erp_hr_employee_create($args);
+		if($create_user){
+			$response['succes'] = '<script type="text/javascript">alert("Successfully submitted application. Please wait 2-3 days verification and identification process, your email address will be your register login username and your password will be sent via email once approved.");</script>';
+			return $response;
+		}
+
+	}
+ return $response;
+}

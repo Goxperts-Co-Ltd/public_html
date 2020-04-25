@@ -44,7 +44,7 @@ $image = get_field( 'banner_image',$post_array['ID']);
 
                             <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                                 aria-labelledby="v-pills-nextgen-tab">
-                                <form action="#" class="search-job">
+                                <form action="<?php echo home_url(); ?>/register" method="post" class="search-job">
                                     <section class="ftco-section bg-light">
                                         <div class="container">
                                             <div class="row">
@@ -56,14 +56,27 @@ $image = get_field( 'banner_image',$post_array['ID']);
                                                             <img src="<?php bloginfo('stylesheet_directory');?>/assets/logo/forms.svg"
                                                                 alt="virtual register" style="width: 8%;">
                                                             <h2>Registration Form</h2>
+                                                            <?php 
+                                                               
+                                                                    $candidate_result = [];
+                                                                    $candidate_result = my_candidate_register();
+                                                                    if(is_array( $candidate_result )){
+                                                                        if($candidate_result)
+                                                                       
+                                                                    
+                                        
+                                                                    } 
+                                                       
+                                                                ?>
                                                         </div>
 
                                                         <div class="row form-group">
                                                             <div class="col-md-12 mb-3 mb-md-0">
                                                                 <label class="font-weight-bold" for="fullname">First
                                                                     Name</label>
-                                                                <input type="text" id="firstName" class="form-control"
-                                                                    placeholder="eg. David">
+                                                                <input type="text" id="firstName" name="firstName"
+                                                                    class="form-control" placeholder="eg. David"
+                                                                    required>
                                                             </div>
                                                         </div>
 
@@ -71,17 +84,70 @@ $image = get_field( 'banner_image',$post_array['ID']);
                                                             <div class="col-md-12 mb-3 mb-md-0">
                                                                 <label class="font-weight-bold" for="fullname">Last
                                                                     Name</label>
-                                                                <input type="text" id="lastName" class="form-control"
-                                                                    placeholder="eg. Anderson.">
+                                                                <input type="text" id="lastName" name="lastName"
+                                                                    class="form-control" placeholder="eg. Anderson."
+                                                                    required>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row form-group">
+                                                            <div class="col-md-12 mb-3 mb-md-0">
+            
+                                                            <span> <label class="font-weight-bold"
+                                                                    for="Email">Email</label>                  
+                                                                <input type="email" id="candidateEmail"
+                                                                    name="candidateEmail" class="form-control"
+                                                                    placeholder="eg. david@virtualninjas.work."
+                                                                    required>
                                                             </div>
                                                         </div>
 
                                                         <div class="row form-group">
                                                             <div class="col-md-12 mb-3 mb-md-0">
                                                                 <label class="font-weight-bold"
-                                                                    for="fullname">Email</label>
-                                                                <input type="email" id="lastName" class="form-control"
-                                                                    placeholder="eg. david@virtualninjas.work.">
+                                                                    for="mobile">Mobile</label>
+                                                                <input type="number" id="candidateMobile"
+                                                                    name="candidateMobile" class="form-control"
+                                                                    placeholder="eg. +63-975-4123-445" required>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row form-group">
+                                                            <div class="col-md-12 mb-3 mb-md-0">
+                                                                <label class="font-weight-bold"
+                                                                    for="mobile">Website</label>
+                                                                <input type="text" id="candidateWebsite"
+                                                                    name="candidateWebsite" class="form-control"
+                                                                    placeholder="eg. www.linkedin.com/profile/david.anderson"
+                                                                    required>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row form-group mb-4">
+                                                            <div class="col-md-12">
+                                                                <label class="font-weight-bold"
+                                                                    for="Gender">Gender</label>
+                                                            </div>
+                                                            <div class="col-md-12 mb-3 mb-md-0">
+                                                                <!-- <input type="text" class="form-control" placeholder="Western City, UK -->
+                                                                <div class="select-wrap">
+                                                                    <div class="icon"><span
+                                                                            class="ion-ios-arrow-down"></span></div>
+                                                                    <select name="candidateGender" id="candidateGender"
+                                                                        class="form-control" required>
+                                                                        <option value="">Select</option>
+                                                                        <?php
+                                                                    //kunin natin gender
+                                                                     $genders = erp_hr_get_genders();
+                                                                     foreach($genders as $gkey => $gender){
+                                        
+                                                                         echo '<option value="'.$gkey.'">'. $gender.'</option>';
+
+                                                                     }
+                                                                    ?>
+                                                                    </select>
+                                                                </div>
+
                                                             </div>
                                                         </div>
 
@@ -95,13 +161,79 @@ $image = get_field( 'banner_image',$post_array['ID']);
                                                                 <div class="select-wrap">
                                                                     <div class="icon"><span
                                                                             class="ion-ios-arrow-down"></span></div>
-                                                                    <select name="" id="" class="form-control">
+                                                                    <select name="candidateType" id="candidateType"
+                                                                        class="form-control" required>
                                                                         <option value="">Select</option>
-                                                                        <option value="">Full Time</option>
-                                                                        <option value="">Part Time</option>
-                                                                        <option value="">Freelance</option>
-                                                                        <option value="">Internship</option>
-                                                                        <option value="">Temporary</option>
+                                                                        <?php 
+                                                                          //kunin natin kung anung job scpecification ni candidate
+                                                                          $types = erp_hr_get_employee_types();
+                                                                          foreach( $types as $tkey => $type){
+                                                                              echo '<option value="'.$tkey.'">'.$type.'</option>';
+                                                                          }
+                                                                        ?>
+                                                                    </select>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row form-group">
+                                                            <div class="col-md-12 mb-3 mb-md-0">
+                                                                <label class="font-weight-bold" for="Pay rate">Pay Rate
+                                                                    ($/hour)</label>
+                                                                <input type="number" id="candidatePayRate"
+                                                                    name="candidatePayRate" class="form-control"
+                                                                    placeholder="eg. 100" required>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row form-group mb-4">
+                                                            <div class="col-md-12">
+                                                                <label class="font-weight-bold" for="Job Type">Pay
+                                                                    Type</label>
+                                                            </div>
+                                                            <div class="col-md-12 mb-3 mb-md-0">
+                                                                <!-- <input type="text" class="form-control" placeholder="Western City, UK -->
+                                                                <div class="select-wrap">
+                                                                    <div class="icon"><span
+                                                                            class="ion-ios-arrow-down"></span></div>
+                                                                    <select name="candidatePayType"
+                                                                        id="candidatePayType" class="form-control"
+                                                                        required>
+                                                                        <option value="">Select</option>
+                                                                        <?php 
+                                                                          //kunin natin kung anung sahuran, gusto nya. tama ba!
+                                                                          $payTypes = erp_hr_get_pay_type();
+                                                                          foreach(  $payTypes as $paykey => $paytype){
+                                                                              echo '<option value="'.$paykey.'">'.$paytype.'</option>';
+                                                                          }
+                                                                        ?>
+                                                                    </select>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row form-group mb-4">
+                                                            <div class="col-md-12">
+                                                                <label class="font-weight-bold"
+                                                                    for="Source">Source</label>
+                                                            </div>
+                                                            <div class="col-md-12 mb-3 mb-md-0">
+                                                                <!-- <input type="text" class="form-control" placeholder="Western City, UK -->
+                                                                <div class="select-wrap">
+                                                                    <div class="icon"><span
+                                                                            class="ion-ios-arrow-down"></span></div>
+                                                                    <select name="candidateSource" id="candidateSource"
+                                                                        class="form-control" required>
+                                                                        <option value="">Select</option>
+                                                                        <?php 
+                                                                          //saan nakita or reference ang virtual ninjas job portal
+                                                                          $sources = erp_hr_get_employee_sources();
+                                                                          foreach(  $sources as $skey => $source){
+                                                                              echo '<option value="'.$skey.'">'.$source.'</option>';
+                                                                          }
+                                                                        ?>
                                                                     </select>
                                                                 </div>
 
@@ -118,13 +250,17 @@ $image = get_field( 'banner_image',$post_array['ID']);
                                                                 <div class="select-wrap">
                                                                     <div class="icon"><span
                                                                             class="ion-ios-arrow-down"></span></div>
-                                                                    <select name="" id="" class="form-control">
+                                                                    <select name="candidateLocation"
+                                                                        id="candidateLocation" class="form-control" required>
                                                                         <option value="">Select</option>
-                                                                        <option value="">Philippines</option>
-                                                                        <option value="">USA</option>
-                                                                        <option value="">Singapore</option>
-                                                                        <option value="">Japan</option>
-                                                                        <option value="">East Timor</option>
+                                                                        <?php 
+                                                                        //kunin natin mga bansa
+                                                                        $load_cuntries_states = \WeDevs\ERP\Countries::instance();
+                                                                        $countries            = $load_cuntries_states->countries;
+                                                                        foreach( $countries as $ckey => $country){
+                                                                            echo ' <option value="'.$ckey.'">'.$country.'</option>';
+                                                                        }           
+                                                                        ?>
                                                                     </select>
                                                                 </div>
 
@@ -133,54 +269,30 @@ $image = get_field( 'banner_image',$post_array['ID']);
 
                                                         <div class="row form-group">
                                                             <div class="col-md-12">
-                                                                <label class="font-weight-bold" for="description">Brief
-                                                                    Personal Description</label>
+                                                                <label class="font-weight-bold"
+                                                                    for="description">Biography
+                                                                </label>
                                                             </div>
                                                             <div class="col-md-12 mb-3 mb-md-0">
-                                                                <textarea name="" class="form-control" id="" cols="30"
-                                                                    rows="5"></textarea>
+                                                                <textarea name="personalDesc" class="form-control"
+                                                                    id="personalDesc" cols="30" rows="5"></textarea>
                                                             </div>
                                                         </div>
 
                                                         <div class="row form-group">
                                                             <div class="col-md-12" style="margin-top: 10px;">
                                                                 <input type="submit" value="Register"
-                                                                    class="btn btn-primary  py-2 px-5">
+                                                                    class="btn btn-primary  py-2 px-5"
+                                                                    name="Candidate_Register">
                                                             </div>
                                                         </div>
 
 
                                                     </form>
                                                 </div>
-
-                                                <div class="col-lg-4">
-                                                    <div class="p-4 mb-3 bg-white">
-                                                        <h2>Need Assistance?</h2>
-                                                        <h3 class="h5 text-black mb-3">Visit or Contact us</h3>
-                                                        <p class="mb-0 font-weight-bold">Address</p>
-                                                        <p class="mb-4">CJA Building B5-G L2 Bach St. Jade Ave. Jade
-                                                            Heights Tunasan, Muntinlupa,1773
-                                                            , Philippines</p>
-
-                                                        <p class="mb-0 font-weight-bold">Phone</p>
-                                                        <p class="mb-4"><a href="tel: 02-8-372-6294"> (02) 8-372-6294
-                                                            </a></p>
-
-                                                        <p class="mb-0 font-weight-bold">Email Address</p>
-                                                        <p class="mb-0"><a href="mailto: info@virtualninjas.work"><span
-                                                                    class="__cf_email__">info@virtualninjas.work</span></a>
-                                                        </p>
-
-                                                    </div>
-
-                                                    <div class="p-4 mb-3 bg-white">
-                                                        <h3 class="h5 text-black mb-3">More Info</h3>
-                                                        <p>Once the application is submitted, wait for 2-3 days
-                                                            verification and identification process,
-                                                            your email address will be your register login username and
-                                                            your password will be sent via email once approved.</p>
-                                                    </div>
-                                                </div>
+                                                <!-- Need Assistance -->
+                                                <?php get_template_part( 'registration-parts/assistance'); ?>
+                                                <!-- End of Need Assistance-->
                                             </div>
                                         </div>
                                     </section>
@@ -300,34 +412,9 @@ $image = get_field( 'banner_image',$post_array['ID']);
                                                     </form>
                                                 </div>
 
-                                                <div class="col-lg-4">
-                                                    <div class="p-4 mb-3 bg-white">
-                                                        <h2>Need Assistance?</h2>
-                                                        <h3 class="h5 text-black mb-3">Visit or Contact us</h3>
-                                                        <p class="mb-0 font-weight-bold">Address</p>
-                                                        <p class="mb-4">CJA Building B5-G L2 Bach St. Jade Ave. Jade
-                                                            Heights Tunasan, Muntinlupa,1773
-                                                            , Philippines</p>
-
-                                                        <p class="mb-0 font-weight-bold">Phone</p>
-                                                        <p class="mb-4"><a href="tel: 02-8-372-6294"> (02) 8-372-6294
-                                                            </a></p>
-
-                                                        <p class="mb-0 font-weight-bold">Email Address</p>
-                                                        <p class="mb-0"><a href="mailto: info@virtualninjas.work"><span
-                                                                    class="__cf_email__">info@virtualninjas.work</span></a>
-                                                        </p>
-
-                                                    </div>
-
-                                                    <div class="p-4 mb-3 bg-white">
-                                                        <h3 class="h5 text-black mb-3">More Info</h3>
-                                                        <p>Once the application is submitted, wait for 2-3 days
-                                                            verification and identification process,
-                                                            your email address will be your register login username and
-                                                            your password will be sent via email once approved.</p>
-                                                    </div>
-                                                </div>
+                                                <!-- Need Assistance -->
+                                                <?php get_template_part( 'registration-parts/assistance'); ?>
+                                                <!-- End of Need Assistance-->
                                             </div>
                                         </div>
                                     </section>
