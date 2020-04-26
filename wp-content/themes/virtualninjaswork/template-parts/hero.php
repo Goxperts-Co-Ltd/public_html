@@ -22,44 +22,45 @@ $employee = count($employees);
 ?>
 
 <div class="ftco-counter ftco-no-pt ftco-no-pb">
-			        	<div class="row">
-				          <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
-				            <div class="block-18">
-				              <div class="text d-flex">
-				              	<div class="icon mr-2">
-				              		<span class="flaticon-worldwide"></span>
-				              	</div>
-				              	<div class="desc text-left">
-					                <strong class="number" data-number="<?php echo $countries; ?>">0</strong>
-					                <span>Countries</span>
-				                </div>
-				              </div>
-				            </div>
-				          </div>
-				          <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
-				            <div class="block-18 text-center">
-				              <div class="text d-flex">
-				              	<div class="icon mr-2">
-				              		<span class="flaticon-visitor"></span>
-				              	</div>
-				              	<div class="desc text-left">
-					                <strong class="number" data-number="<?php echo $company; ?>">0</strong>
-					                <span>Companies</span>
-					              </div>
-				              </div>
-				            </div>
-				          </div>
-				          <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
-				            <div class="block-18 text-center">
-				              <div class="text d-flex">
-				              	<div class="icon mr-2">
-				              		<span class="flaticon-resume"></span>
-				              	</div>
-				              	<div class="desc text-left">
-					                <strong class="number" data-number="<?php echo $employee;?>">0</strong>
-					                <span>Active Employees</span>
-					              </div>
-				              </div>
-				            </div>
-				          </div>
-				        </div>
+    <div class="row">
+        <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
+            <div class="block-18">
+                <div class="text d-flex">
+                    <div class="icon mr-2">
+                        <span class="flaticon-worldwide"></span>
+                    </div>
+                    <div class="desc text-left">
+                        <strong class="number" data-number="<?php echo $countries; ?>">0</strong>
+                        <span>Countries</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
+            <div class="block-18 text-center">
+                <div class="text d-flex">
+                    <div class="icon mr-2">
+                        <span class="flaticon-visitor"></span>
+                    </div>
+                    <div class="desc text-left">
+                        <strong class="number" data-number="<?php echo $company; ?>">0</strong>
+                        <span>Companies</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
+            <div class="block-18 text-center">
+                <div class="text d-flex">
+                    <div class="icon mr-2">
+                        <span class="flaticon-resume"></span>
+                    </div>
+                    <div class="desc text-left">
+                        <strong class="number" data-number="<?php echo $employee;?>">0</strong>
+                        <span>Active Employees</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

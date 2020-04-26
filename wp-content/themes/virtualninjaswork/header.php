@@ -16,7 +16,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container-fluid px-md-4	">
 		<h1 class="brands">VirtualNinjas.Work</h1>
-            <a class="navbar-brand" href="<?php echo get_home_url(); ?>"><img src="<?php bloginfo('stylesheet_directory');?>/assets/logo/profile.PNG" style="width:50px;height:50px;border-radius: 50%;" >&nbsp;Virtual Ninjas</a>
+            <a class="navbar-brand" href="<?php echo get_home_url(); ?>"><img src="<?php bloginfo('stylesheet_directory');?>/assets/logo/profile.PNG" style="width:50px;height:50px;border-radius: 50%;"  alt="virtual Ninjas">&nbsp;Virtual Ninjas</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu

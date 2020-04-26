@@ -21,9 +21,9 @@ $banner_text = get_field( 'banner_text',$post_array['ID']);
 				<!-- Banner Text -->
 	        		<?php echo $banner_text;?>					
 				<!-- hero slider -->
-				<?php get_template_part( 'template-parts/hero'); ?>
+				<!-- Disable for now, saka na pag madami na users -->
+				<?php //get_template_part( 'template-parts/hero'); ?>
 				<!-- end of slider -->
-			        </div>
 							<div class="ftco-search my-md-5">
 								<div class="row">
 			            <!-- search candidate -->

@@ -653,6 +653,7 @@ return $term_value;
 add_action('template_redirect', 'my_candidate_register');
 function my_candidate_register(){
 	if( is_page('register') && isset($_POST['Candidate_Register']) ){
+  //if(isset($_POST)){
 		$response = [];
 		$creds                      = array();
 		$creds['firstName']         = stripslashes( trim( $_POST['firstName'] ) );
@@ -722,18 +723,79 @@ function my_candidate_register(){
 				'postal_code'     => '',
 			),
 		);
-		//validate email is already exist napo
-		$candidate_user = get_user_by( 'email', $creds['candidateEmail'] );
-		if($candidate_user){
-			$response['email'] = '<script type="text/javascript">alert("Email is already exist!");</script>';
-			return $response;
+		 //saved candidate details
+		if( erp_hr_employee_create($args)){
+	   		 $response['success'] = 'Successfully submitted application. Please wait 2-3 days verification and identification process, your email address will be your register login username and your password will be sent via email once approved.';				
 		}
-		$create_user = erp_hr_employee_create($args);
-		if($create_user){
-			$response['succes'] = '<script type="text/javascript">alert("Successfully submitted application. Please wait 2-3 days verification and identification process, your email address will be your register login username and your password will be sent via email once approved.");</script>';
-			return $response;
-		}
-
 	}
  return $response;
 }
+
+function email_check(){
+	//real tme validation for email with jquery
+	if (isset($_POST)) {
+		$email = $_POST['email'];                   
+			if (email_exists($email)) {
+				$result =  "taken";	
+			}else{
+			    $result =  "not_taken";
+			}
+        echo  $result;
+	}
+	die();
+}
+add_action( 'wp_ajax_nopriv_email_check', 'email_check' );
+add_action( 'wp_ajax_email_check', 'email_check' );
+
+//restrict login user to login page
+function redirect_register_page() {
+
+    if( is_page( 'register' ) && is_user_logged_in() ) {
+        wp_redirect( home_url() );
+        exit;
+    }
+
+}
+add_action( 'template_redirect', 'redirect_register_page' );
+
+//company registration
+//set candidate registration
+//add_action('template_redirect', 'my_company_register');
+function my_company_register(){
+	if($_POST){
+		$response = [];
+		$creds                      = array();
+		$creds['companyName']         = stripslashes( trim( $_POST['companyName'] ) );
+		$creds['companyEmail']          = stripslashes( trim( $_POST['companyEmail'] ) );
+		$creds['companyPhone']    = stripslashes( trim( $_POST['companyPhone'] ) );
+		$creds['webSite']     = stripslashes( trim( $_POST['webSite'] ) );
+		$creds['companyLocation'] = stripslashes( trim( $_POST['companyLocation'] ) );
+		$creds['companySource']      = stripslashes( trim( $_POST['companySource'] ) );
+		$creds['companyNotes']   = stripslashes( trim( $_POST['companyNotes'] ) );
+		//null muna sa ngayon
+		$secure_cookie              = null;
+
+	}
+
+	echo $creds;
+	die();
+}
+add_action( 'wp_ajax_nopriv_my_company_register', 'my_company_register' );
+add_action( 'wp_ajax_my_company_register', 'my_company_register' );
+
+function company_email_check(){
+	//real tme validation for email with jquery
+	if (isset($_POST)) {
+		$email = $_POST['company_email'];                   
+			if (email_exists($email)) {
+				$result =  "taken";	
+			}else{
+			    $result =  "not_taken";
+			}
+        echo  $result;
+	}
+	die();
+}
+add_action( 'wp_ajax_nopriv_company_email_check', 'company_email_check' );
+add_action( 'wp_ajax_company_email_check', 'company_email_check' );
+
