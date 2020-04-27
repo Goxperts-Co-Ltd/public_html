@@ -799,3 +799,20 @@ function company_email_check(){
 add_action( 'wp_ajax_nopriv_company_email_check', 'company_email_check' );
 add_action( 'wp_ajax_company_email_check', 'company_email_check' );
 
+
+//footer user account link
+function candidate_info(){
+	$root = get_home_url();
+	$logout = wp_logout_url();
+	if(is_user_logged_in()){
+		echo '
+		<li><a href="'.$root.'/wp-admin/admin.php?page=erp-hr" class="pb-1 d-block" rel="nofollow">Dashboard</a></li>
+		<li><a href="'.$root.'/job-openings/" class="pb-1 d-block">Job Listing</a></li> 
+		<li><a href="'.$root.'/wp-admin/admin.php?page=erp-hr&section=my-profile" class="pb-1 d-block" rel="nofollow">My Profile</a></li>
+		<li><a href="'.$logout.'" class="pb-1 d-block" rel="nofollow">Logout</a></li>';
+	}else{
+		echo '
+		<li><a href="'.$root.'/login" class="pb-1 d-block">Sign In</a></li>
+		<li><a href="'.$root.'/register" class="pb-1 d-block">Register</a></li>';	
+	}
+}
