@@ -32,23 +32,42 @@ function wp_get_menu_array($current_menu) {
 		}  
         if (empty($m->menu_item_parent)) {
 			if($m->title == 'Want a Job'){
-
-				echo '<li class="nav-item cta cta-colored"><a href="';
-				 echo $m->url;
-				 echo '" class="nav-link">';
-				//echo '<h2>';
-				echo  $m->title;
-				// echo '</h2>';
-				echo '</a></li>';
-	
+				if(is_user_logged_in()){
+					echo '<li class="nav-item cta cta-colored"><a href="';
+				 	echo $m->url;
+				 	echo '" class="nav-link">';
+					//echo '<h2>';
+					echo  $m->title;
+					// echo '</h2>';
+					echo '</a></li>';
+				}else{
+					echo '<li class="nav-item cta cta-colored"><a href="';
+				 	echo  get_home_url().'/register';
+				 	echo '" class="nav-link">';
+					//echo '<h2>';
+					echo  'Register';
+					// echo '</h2>';
+					echo '</a></li>';
+				}
 				}elseif($m->title == 'Post a Job'){
-				echo '<li class="nav-item cta mr-md-1"><a href="';
-				 echo $m->url;
-				 echo '" class="nav-link">';
-				//echo '<h2>';
-				echo  $m->title;
-				// echo '</h2>';
-				echo '</a></li>';
+					if(is_user_logged_in()){
+						echo '<li class="nav-item cta mr-md-1"><a href="';
+				 		echo $m->url;
+				 		echo '" class="nav-link">';
+						//echo '<h2>';
+						echo  $m->title;
+						// echo '</h2>';
+						echo '</a></li>';
+					}else{
+						echo '<li class="nav-item cta mr-md-1"><a href="';
+				 		echo  get_home_url().'/login';
+				 		echo '" class="nav-link">';
+						//echo '<h2>';
+						echo  'Login';
+						// echo '</h2>';
+						echo '</a></li>';
+					}
+				
 				}else{
 
 				echo '<li class="nav-item active"><a href="';
