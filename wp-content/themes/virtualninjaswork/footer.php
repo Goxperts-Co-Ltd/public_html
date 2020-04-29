@@ -17,23 +17,65 @@
           </div>
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Employers</h2>
-              <ul class="list-unstyled">
-               <!-- Employers footer Menu -->
-               <?php  wp_get_employers_footer_menu_array('Employers') ?>
-               <!-- end of employers footers -->
+               <?php  
+                $home = get_home_url();
+                echo '
+                <div class="col-md">
+                  <div class="ftco-footer-widget mb-4 ml-md-4">
+                    <h2 class="ftco-heading-2">Menu</h2>
+                    <ul class="list-unstyled">
+                      <li><a href="'.$home.'/" class="pb-1 d-block">Home</a></li>
+                      <li><a href="'.$home.'/job-openings/" class="pb-1 d-block">Browse Jobs</a></li>
+                      <li><a href="'.$home.'/blog/" class="pb-1 d-block">Blog</a></li>
+                      <li><a href="'.$home.'/contact-us/" class="pb-1 d-block">Contact</a></li>
+                    </ul>
+                  </div>
+                </div>
+                ';     
+               ?>
               </ul>
             </div>
           </div>
           <div class="col-md">
-            <div class="ftco-footer-widget mb-4 ml-md-4">
-              <h2 class="ftco-heading-2">Candidate</h2>
-              <ul class="list-unstyled">
+            <div class="ftco-footer-widget mb-4 ml-md-4">     
+              <?php 
+               $user = wp_get_current_user();
+                if(in_array('hrm_employee',$user->roles) || in_array('employee',$user->roles) ){
 
-              <!-- Candidate footer Menu -->
-              <?php  wp_get_candidate_footer_menu_array('Candidate') ?>
-               <!-- end of candidate footers -->
-            
+                  echo '
+                  <h2 class="ftco-heading-2">Candidate</h2>
+                  <ul class="list-unstyled">
+                  ';
+                  
+                  wp_get_candidate_footer_menu_array('Candidate');
+
+                }
+
+                if(in_array('hr',$user->roles) || in_array('hrm_manager',$user->roles) ){
+
+                  echo '
+                  <h2 class="ftco-heading-2">Employers</h2>
+                  <ul class="list-unstyled">
+                  ';
+                  
+                  wp_get_employers_footer_menu_array('Employers');
+
+                }else{
+                  echo '
+                  <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-4">
+                      <h2 class="ftco-heading-2">Menu</h2>
+                      <ul class="list-unstyled">
+                        <li><a href="'.$home.'/job-openings" class="pb-1 d-block">Job Listing</a></li>
+                        <li><a href="'.$home.'/" class="pb-1 d-block">Employer Listing</a></li>
+                        <li><a href="'.$home.'/" class="pb-1 d-block">Privacy Policy</a></li>
+                        <li><a href="'.$home.'/" class="pb-1 d-block">Terms & Conditions</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  ';
+                }          
+               ?>        
               </ul>
             </div>
           </div>
