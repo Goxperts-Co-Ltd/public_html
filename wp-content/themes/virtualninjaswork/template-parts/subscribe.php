@@ -9,7 +9,23 @@
                 <div class="col-md-12">
                   <div class="subscribe-form">
                     <div class="form-group d-flex">
-                     <?php //echo do_shortcode('[weforms id="109"]') ?>
+                     <?php 
+
+                      $args = [
+                        'contact' => array(
+                          'email' => 'ferdinandlazarte20179@gmail.com',
+                        ),
+                        'groups' => '',
+                        'life_stage'=> '',
+                      ];
+
+                      $subscribe = new \WeDevs\ERP\CRM\Subscription;
+                     // \Subscription::get_instance();
+                    // var_dump( create_subsciber( $args));die;
+                     //echo do_shortcode('[weforms id="109"]')
+                     
+                     var_dump($subscribe->create_subsciber( $args));die;
+                     ?>
                      <input type="text" class="form-control" placeholder="Enter email address">     
                       <input type="submit" value="Submit" class="submit px-3" name="submit">
                     </div>
