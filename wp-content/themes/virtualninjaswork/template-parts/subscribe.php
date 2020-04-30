@@ -13,7 +13,9 @@
                     'email_address_9377650294' => $email
                   ];   
                   $subscribed =  weforms_insert_entry($args, $fields );
-                  var_dump($subscribed);
+                 // $ierp = new \WeForms_Integration_ERP;
+                 // $erp =  $ierp->subscribe_user($subscribed, $form_id="109", $page_id, $form_settings);
+                 // print_r(get_class_methods( $ierp));die;
                 }
                   ?>   
               <div class="row d-flex justify-content-center mt-4 mb-4">
